@@ -44,4 +44,18 @@ courseRouter.post("/enroll",async(req,res)=>{
     }
 })
 
+courseRouter.post("/cancel-enrollment",async(req,res)=>{
+   try {
+    const cancelEnroll = await CourseModel.find(req.body)
+    res.json({"message":"Successfully canceled enrollment"})
+   } catch (error) {
+    res.json({"error":"error in canceling enrollment"})
+   }
+})
+
+courseRouter.get("/my-courses",async(req,res)=>{
+    const allCourse = await CourseModel.find()
+    res.send(allCourse)
+})
+
 module.exports = courseRouter
