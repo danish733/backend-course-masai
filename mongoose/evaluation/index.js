@@ -1,12 +1,15 @@
 const express = require("express")
 const connection = require("./config/db")
 const userRouter = require("./routes/user.route")
+const courseRouter = require("./routes/course.route")
 const port = 8080
 
 const app = express()
 
 app.use(express.json())
+
 app.use("/user", userRouter)
+app.use("/course", courseRouter)
 
 app.get("/",(req,res)=>{
     res.send("welcome to evalution")
